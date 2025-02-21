@@ -56,3 +56,9 @@ def pad_sequence(seq, max_len, pad_idx):
 
 max_len = max(max(len(en), len(ur)) for en, ur in dataset)
 padded_dataset = [(pad_sequence(en, max_len, en_vocab["<PAD>"]), pad_sequence(ur, max_len, ur_vocab["<PAD>"])) for en, ur in dataset]
+
+## Problem with this approach ###
+
+# Idiomatic Expressions:
+# Phrases like "What is your name?" translate to "آپ کا نام کیا ہے؟" as a whole, not word by word.
+# The model might incorrectly learn mappings like "What" → "آپ" or "is" → "کیا", which are not accurate translations.
